@@ -1,0 +1,16 @@
+# Ansible playbook to perform software updates on servers.
+
+- name: Update system software on servers.
+  hosts: "{{ hosts_group }}"
+  tasks:
+  
+  - name: Update all Debian based systems packages to their latest version.
+    become: true
+    ansible.builtin.apt:
+      upgrade: yes
+      update_cache: yes 
+    when: ( ansible_distribution == "Ubuntu" or ansible_distribution == "Debian" )
+
+
+
+  

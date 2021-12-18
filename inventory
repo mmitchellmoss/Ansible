@@ -1,0 +1,21 @@
+
+# VM Lab Servers
+ncca ansible_host=ncc-1701-a.moss.lan ansible_connection=ssh
+nccb ansible_host=ncc-1701-b.moss.lan ansible_connection=ssh
+nccc ansible_host=ncc-1701-c.moss.lan ansible_connection=ssh
+nccd ansible_host=ncc-1701-d.moss.lan ansible_connection=ssh
+
+
+
+# Groups
+[vm_lab_servers]
+ncca
+nccb
+nccc
+nccd
+
+[all_servers:children]
+vm_lab_servers
+
+[all:children]
+vm_lab_servers
