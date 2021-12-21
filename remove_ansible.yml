@@ -1,0 +1,16 @@
+# Ansible playbook to ensure Ansible is not installed on nodes.
+
+- name: Remove Ansible from nodes.
+  hosts: "{{ hosts_group }}"
+  tasks:
+  
+  - name: Removing Ansible from nodes if installed.
+    become: true
+    ansible.builtin.apt:
+      name: ansible
+      state: absent
+    when: ( ansible_distribution == "Ubuntu" or ansible_distribution == "Debian" )
+
+
+
+  
