@@ -5,6 +5,9 @@ nccb ansible_host=ncc-1701-b.moss.lan ansible_connection=ssh
 nccc ansible_host=ncc-1701-c.moss.lan ansible_connection=ssh
 nccd ansible_host=ncc-1701-d.moss.lan ansible_connection=ssh
 
+# Home services.
+pi ansible_host=pi ansible_connection=ssh
+
 
 
 # Groups
@@ -14,8 +17,13 @@ nccb
 nccc
 nccd
 
+[home]
+pi
+
 [all_servers:children]
 vm_lab_servers
+home
 
 [all:children]
 vm_lab_servers
+home
