@@ -5,9 +5,9 @@
   tasks:
   
   - name: Update all Debian based systems packages to their latest version.
-    become: true
+    become: yes
     ansible.builtin.apt:
-      upgrade: yes
+      upgrade: "yes"  # Apparently this thing expects a string value.
       update_cache: yes 
     when: ( ansible_distribution == "Ubuntu" or ansible_distribution == "Debian" )
 
